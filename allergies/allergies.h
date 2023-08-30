@@ -2,16 +2,15 @@
 #define ALLERGIES_H
 #include <string>
 #include <unordered_set>
-#include <map>
 #include <tuple>
-
+#include <list>
 
 namespace allergies {
   class allergy_test {
   private:
     int allergy_score;
     std::unordered_set<std::string> allergens;
-    // std::list<int> values{256, 128, 64, 32, 16, 8, 4, 2, 1}
+    std::list<int> values{256, 128, 64, 32, 16, 8, 4, 2, 1};
     // std::list<std::string> names{"cats" "pollen" "chocolate" "tomatoes" "strawberries" "shellfish" "peanuts" "eggs"}
     // std::list<std::tuple<std::string, int>> names_to_score(std::views::zip(names, values))
 
