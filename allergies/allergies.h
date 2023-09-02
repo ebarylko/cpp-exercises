@@ -2,20 +2,18 @@
 #define ALLERGIES_H
 #include <string>
 #include <unordered_set>
+using namespace std;
 
 namespace allergies {
   class allergy_test {
   private:
     public:
     allergy_test(int score); 
-    std::unordered_set<std::string> add_allergies(int score);
-    bool is_allergic_to(std::string allergy);
+    unordered_set<string> add_allergies(int score);
+    bool is_allergic_to(string allergy);
+    unordered_set<string> get_allergies();
   };
 }  // namespace allergies
 
-#endif // ALLERGIES_H
-// (reduce (fn [[coll score] [allergy val]]
-//          (case (<= 0 (- score val) )
-//           [(conj coll allergy) (- score val)]
-//           (reduced [coll score]))) allergies)
-// {:allergy val}
+#endif
+// ALLERGIES_H

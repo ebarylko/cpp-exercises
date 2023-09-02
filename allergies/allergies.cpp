@@ -3,8 +3,16 @@
 #include <map>
 #include <list>
 #include <set>
+#include <iostream>
 
 using namespace std;
+
+void print(unordered_set<string> const &s)
+{
+	copy(s.begin(),
+            s.end(),
+            ostream_iterator<string>(cout, " "));
+}
 
 namespace allergies {
 
@@ -31,9 +39,13 @@ namespace allergies {
   }
 
   bool allergy_test::is_allergic_to(std::string allergy) {
+    print(actual_allergies);
     return actual_allergies.count(allergy);
   }
 
+  unordered_set<string> allergy_test::get_allergies() {
+    return actual_allergies;
+  }
   const unordered_set<string>& get_allergies() {
     return actual_allergies;
   }
