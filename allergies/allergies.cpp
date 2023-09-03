@@ -12,6 +12,7 @@ void print(unordered_set<string> const &s)
 	copy(s.begin(),
             s.end(),
             ostream_iterator<string>(cout, " "));
+  cout << endl;
 }
 
 namespace allergies {
@@ -27,26 +28,20 @@ namespace allergies {
     { "eggs", 1}
   };
 
-  unordered_set<string> actual_allergies;
-
   allergy_test::allergy_test(int score) {
     set<pair<string, int>> allergens;
     copy_if(names_to_score.begin(), names_to_score.end(), inserter(allergens, allergens.end()), [score](auto const & allergy) {
-      return score & allergy.second;
+      return (score % 256) & allergy.second;
     });
 
     transform(allergens.begin(), allergens.end(), inserter(actual_allergies, actual_allergies.end()), [](auto const &pair) { return pair.first; });
   }
 
-  bool allergy_test::is_allergic_to(std::string allergy) {
-    print(actual_allergies);
+  bool allergy_test::is_allergic_to(std::string allergy) const {
     return actual_allergies.count(allergy);
   }
 
-  unordered_set<string> allergy_test::get_allergies() {
-    return actual_allergies;
-  }
-  const unordered_set<string>& get_allergies() {
+  const unordered_set<string>& allergy_test::get_allergies() const {
     return actual_allergies;
   }
 
